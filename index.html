@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple 2D Mario Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFE4B5 100%);
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            animation: backgroundShift 10s ease-in-out infinite alternate;
+        }
+        
+        @keyframes backgroundShift {
+            0% { background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #FFE4B5 100%); }
+            100% { background: linear-gradient(135deg, #FFE4B5 0%, #87CEEB 50%, #98FB98 100%); }
+        }
+        
+        .game-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .game-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        canvas {
+            border: 2px solid #333;
+            background: #5C94FC;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        .controls {
+            margin-top: 15px;
+            color: #333;
+        }
+        
+        .score {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1>🍄 Simple Mario Game 🍄</h1>
+        <div class="score">
+            Level: <span id="level">1</span> | Score: <span id="score">0</span> | Fuel: <span id="fuel">100</span>%
+        </div>
+        <div class="power-ups" id="powerUpStatus" style="font-size: 14px; color: #666; margin-bottom: 5px;">
+            Power-ups: <span id="activePowerUps">None</span>
+        </div>
+        <canvas id="gameCanvas" width="800" height="400"></canvas>
+        <div class="controls">
+            <p><strong>Controls:</strong> Arrow Keys to Move, Spacebar to Jump</p>
+            <p>Collect coins and avoid enemies!</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>
